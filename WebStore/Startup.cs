@@ -21,7 +21,7 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //Добавление инфраструктуры MVC
+            //Р”РѕР±Р°РІР»РµРЅРёРµ РёРЅС„СЂР°СЃС‚СЂСѓРєС‚СѓСЂС‹ MVC
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
@@ -32,6 +32,8 @@ namespace WebStore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -41,7 +43,7 @@ namespace WebStore
                 //    await context.Response.WriteAsync("Hello World!");
                 //});
 
-                //Настройка главного маршрута приложения
+                //РќР°СЃС‚СЂРѕР№РєР° РіР»Р°РІРЅРѕРіРѕ РјР°СЂС€СЂСѓС‚Р° РїСЂРёР»РѕР¶РµРЅРёСЏ
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }

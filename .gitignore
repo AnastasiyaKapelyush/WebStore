@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/WebStore/wwwroot/lib/flexslider
+/WebStore/wwwroot/lib/greensock
+/WebStore/wwwroot/lib/Isotope
+/WebStore/wwwroot/lib/font-awesome
+/WebStore/wwwroot/lib/jquery-easing
+/WebStore/wwwroot/lib/ScrollMagic
+/WebStore/wwwroot/lib/progressbar.js
+/WebStore/wwwroot/lib/parallax.js
+/WebStore/wwwroot/lib/OwlCarousel2
