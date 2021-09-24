@@ -11,16 +11,6 @@
       "destination": "wwwroot/lib/font-awesome/"
     },
     {
-      "provider": "filesystem",
-      "library": "C:\\Users\\AI_Kapelyush\\Downloads\\littlecloset\\plugins\\greensock",
-      "destination": "wwwroot/lib/greensock/"
-    },
-    {
-      "provider": "filesystem",
-      "library": "C:\\Users\\AI_Kapelyush\\Downloads\\littlecloset\\plugins\\Isotope",
-      "destination": "wwwroot/lib/Isotope/"
-    },
-    {
       "library": "ScrollMagic@2.0.5",
       "destination": "wwwroot/lib/ScrollMagic/"
     },
@@ -41,13 +31,21 @@
       "destination": "wwwroot/lib/jquery-easing/"
     },
     {
-      "provider": "filesystem",
-      "library": "C:\\Users\\AI_Kapelyush\\Downloads\\littlecloset\\plugins\\OwlCarousel2-2.2.1",
+      "library": "twitter-bootstrap@4.1.2",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "OwlCarousel2@2.2.1",
       "destination": "wwwroot/lib/OwlCarousel2/"
     },
     {
-      "library": "twitter-bootstrap@4.1.2",
-      "destination": "wwwroot/lib/bootstrap/"
+      "library": "jquery.isotope@3.0.6",
+      "destination": "wwwroot/lib/jquery.isotope/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "greensock@1.20.2",
+      "destination": "wwwroot/lib/greensock/"
     }
   ]
 }
