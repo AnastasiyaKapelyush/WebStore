@@ -35,17 +35,23 @@
       "destination": "wwwroot/lib/bootstrap/"
     },
     {
-      "library": "OwlCarousel2@2.2.1",
+      "library": "jquery.isotope@3.0.6",
+      "destination": "wwwroot/lib/isotope/"
+    },
+    {
+      "provider": "filesystem",
+      "library": "C:\\Users\\AI_Kapelyush\\Downloads\\littlecloset\\plugins\\OwlCarousel2-2.2.1",
       "destination": "wwwroot/lib/OwlCarousel2/"
     },
     {
-      "library": "jquery.isotope@3.0.6",
-      "destination": "wwwroot/lib/jquery.isotope/"
+      "provider": "filesystem",
+      "library": "C:\\Users\\AI_Kapelyush\\Downloads\\littlecloset\\plugins\\greensock\\",
+      "destination": "wwwroot/lib/greensock/"
     },
     {
       "provider": "unpkg",
-      "library": "greensock@1.20.2",
-      "destination": "wwwroot/lib/greensock/"
+      "library": "isotope-fit-columns@1.1.4",
+      "destination": "wwwroot/lib/isotope-fit-columns/"
     }
   ]
 }
