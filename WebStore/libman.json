@@ -1,0 +1,57 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.2.1",
+      "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "library": "font-awesome@4.7.0",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "ScrollMagic@2.0.5",
+      "destination": "wwwroot/lib/ScrollMagic/"
+    },
+    {
+      "library": "progressbar.js@1.0.1",
+      "destination": "wwwroot/lib/progressbar.js/"
+    },
+    {
+      "library": "parallax.js@1.5.0",
+      "destination": "wwwroot/lib/parallax.js/"
+    },
+    {
+      "library": "flexslider@2.7.1",
+      "destination": "wwwroot/lib/flexslider/"
+    },
+    {
+      "library": "jquery-easing@1.3",
+      "destination": "wwwroot/lib/jquery-easing/"
+    },
+    {
+      "library": "twitter-bootstrap@4.1.2",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "jquery.isotope@3.0.6",
+      "destination": "wwwroot/lib/isotope/"
+    },
+    {
+      "provider": "filesystem",
+      "library": "C:\\Users\\AI_Kapelyush\\Downloads\\littlecloset\\plugins\\OwlCarousel2-2.2.1",
+      "destination": "wwwroot/lib/OwlCarousel2/"
+    },
+    {
+      "provider": "filesystem",
+      "library": "C:\\Users\\AI_Kapelyush\\Downloads\\littlecloset\\plugins\\greensock\\",
+      "destination": "wwwroot/lib/greensock/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "isotope-fit-columns@1.1.4",
+      "destination": "wwwroot/lib/isotope-fit-columns/"
+    }
+  ]
+}

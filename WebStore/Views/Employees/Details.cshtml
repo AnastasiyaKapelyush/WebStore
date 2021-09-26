@@ -1,0 +1,45 @@
+﻿@model WebStore.Models.Employee
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<div class="container" style="margin-top: 80px;">
+	<h3>Карточка сотрудника</h3>
+	<hr/>
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            №
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Id
+        </dd>
+        <dt class = "col-sm-2">
+            Имя
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.FirstName
+        </dd>
+        <dt class = "col-sm-2">
+            Фамилия
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.LastName
+        </dd>
+        <dt class = "col-sm-2">
+            Отчество
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.MiddleName
+        </dd>
+        <dt class = "col-sm-2">
+            Возраст
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Age
+        </dd>
+    </dl>
+
+	<a asp-controller="Home" asp-action="Index" class="btn btn-default">Главная страница</a>
+</div>
