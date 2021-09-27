@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.Infrastucture.Middleware;
 
 namespace WebStore
 {
@@ -36,13 +37,11 @@ namespace WebStore
 
             app.UseRouting();
 
+            //Вызов промежуточного ПО
+            app.UseMiddleware<TestMiddleware>();
+
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapGet("/", async context =>
-                //{
-                //    await context.Response.WriteAsync("Hello World!");
-                //});
-
                 //Настройка главного маршрута приложения
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
