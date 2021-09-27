@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.Infrastucture.Conventions;
 using WebStore.Infrastucture.Middleware;
 
 namespace WebStore
@@ -23,7 +24,8 @@ namespace WebStore
         public void ConfigureServices(IServiceCollection services)
         {
             //Добавление инфраструктуры MVC
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddControllersWithViews(opt => opt.Conventions.Add(new TestControllerConvention()))
+                    .AddRazorRuntimeCompilation();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -39,6 +41,8 @@ namespace WebStore
 
             //Вызов промежуточного ПО
             app.UseMiddleware<TestMiddleware>();
+
+            //app.UseWelcomePage("/welcome");
 
             app.UseEndpoints(endpoints =>
             {
