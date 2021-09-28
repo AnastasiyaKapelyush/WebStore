@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using WebStore.Data;
 using WebStore.Models;
+using WebStore.Services.Interfaces;
 
 namespace WebStore.Controllers
 {
@@ -11,10 +13,12 @@ namespace WebStore.Controllers
     //[Route("Staff/[action]/{id?}")]
     public class EmployeesController : Controller
     {
-        private readonly IEnumerable<Employee> _Employees;
-        public EmployeesController()
+        private readonly IEmployeesData _employeesData;
+        private readonly ILogger<EmployeesController> _logger;
+        public EmployeesController(IEmployeesData employeesData, ILogger<EmployeesController> logger)
         {
-            _Employees = TestData.Employees;
+            _employeesData = employeesData;
+            _logger = logger;
         }
 
         /// <summary>
@@ -23,7 +27,7 @@ namespace WebStore.Controllers
         //[Route("[controller]/all")]
         public IActionResult Index()
         {
-            return View(_Employees);
+            return View(_employeesData.GetAll());
         }
 
         /// <summary>
@@ -32,7 +36,7 @@ namespace WebStore.Controllers
         //[Route("[controller]/info-{id}")]
         public IActionResult Details(int id)
         {
-            var employee = _Employees.FirstOrDefault(e => e.Id == id);
+            var employee = _employeesData.GetById(id);
 
             if (employee == null)
                 return NotFound();
