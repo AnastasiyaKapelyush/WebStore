@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebStore.Infrastucture.Conventions;
 using WebStore.Infrastucture.Middleware;
+using WebStore.Services;
+using WebStore.Services.Interfaces;
 
 namespace WebStore
 {
@@ -23,6 +25,11 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //Регистрация сервиса
+            services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            //services.AddScoped<IEmployeesData, InMemoryEmployeesData>();
+            //services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
+
             //Добавление инфраструктуры MVC
             services.AddControllersWithViews(opt => opt.Conventions.Add(new TestControllerConvention()))
                     .AddRazorRuntimeCompilation();
