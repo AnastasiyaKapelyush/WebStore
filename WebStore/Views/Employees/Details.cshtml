@@ -41,5 +41,8 @@
         </dd>
     </dl>
 
-	<a asp-controller="Home" asp-action="Index" class="btn btn-default">Главная страница</a>
+	@*<a asp-controller="Home" asp-action="Index" class="btn btn-dark">Главная страница</a>|*@
+    <a asp-controller="Employees" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Редактировать</a>
+	<a asp-controller="Employees" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Удалить</a>
+    <a asp-action="Index" class="btn btn-dark">Назад</a>
 </div>
