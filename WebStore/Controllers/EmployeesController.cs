@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using WebStore.Data;
 using WebStore.Models;
 using WebStore.Services.Interfaces;
 using WebStore.ViewModels;
