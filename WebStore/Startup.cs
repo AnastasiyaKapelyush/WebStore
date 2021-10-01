@@ -42,6 +42,8 @@ namespace WebStore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStatusCodePages();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -50,6 +52,8 @@ namespace WebStore
             app.UseMiddleware<TestMiddleware>();
 
             //app.UseWelcomePage("/welcome");
+
+            app.UseStatusCodePagesWithReExecute("/Home/Status/{0}");
 
             app.UseEndpoints(endpoints =>
             {
