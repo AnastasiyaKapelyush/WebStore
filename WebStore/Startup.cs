@@ -25,8 +25,9 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //Регистрация сервиса
+            //Регистрация сервисов
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            services.AddSingleton<IProductData, InMemoryProductData>();
             //services.AddScoped<IEmployeesData, InMemoryEmployeesData>();
             //services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
 
