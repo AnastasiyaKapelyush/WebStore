@@ -1,8 +1,13 @@
-﻿<partial name="Partial/_Style">
+﻿@model CatalogViewModel
+@{
+	ViewBag.Title = "Каталог товаров";
+}
+
+<partial name="Partial/_Style">
 <div class="products">
 	<div class="container">
-		<partial name="Partial/_Filter">
-		<partial name="Partial/_Products">
+		<partial name="Partial/_Filter" />
+		<partial name="Partial/_Products" model="Model.Products" />
 		
 		<div class="row page_nav_row">
 			<div class="col">

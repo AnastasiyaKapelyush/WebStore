@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using WebStore.Data;
 using WebStore.Models;
 using WebStore.Services.Interfaces;
 using WebStore.ViewModels;
@@ -61,7 +57,7 @@ namespace WebStore.Controllers
                 return NotFound();
 
             var model = new EmployeeViewModel
-            { 
+            {
                 Id = employee.Id,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
@@ -75,6 +71,12 @@ namespace WebStore.Controllers
         [HttpPost]
         public IActionResult Edit(EmployeeViewModel model)
         {
+            if (model.FirstName == "Тест" && model.LastName == "Тестов" && model.MiddleName == "Тестович")
+                ModelState.AddModelError("", "Невозможно взять тестового пользователя!");
+
+            if (!ModelState.IsValid)
+                return View(model);
+
             var employee = new Employee
             {
                 Id = model.Id,
@@ -84,12 +86,13 @@ namespace WebStore.Controllers
                 Age = model.Age
             };
 
-            if(employee.Id == 0)
+            if (employee.Id == 0)
                 _employeesData.Add(employee);
             else
                 _employeesData.Update(employee);
 
             return RedirectToAction(nameof(Index));
+
         }
         #endregion
 

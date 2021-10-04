@@ -1,0 +1,11 @@
+﻿@model IEnumerable<BrandViewModel>
+
+<div class="products_bar_links">
+	<ul class="d-flex flex-row align-items-start justify-content-start">
+		@foreach(var brand in Model)
+		{
+			<li><a asp-controller="Catalog" asp-action="Index" asp-route-BrandId="@brand.Id">@brand.Name</a></li>
+		}
+		@*<li class="active">*@
+	</ul>
+</div>

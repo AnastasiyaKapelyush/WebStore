@@ -25,8 +25,9 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //Регистрация сервиса
+            //Регистрация сервисов
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            services.AddSingleton<IProductData, InMemoryProductData>();
             //services.AddScoped<IEmployeesData, InMemoryEmployeesData>();
             //services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
 
@@ -40,7 +41,10 @@ namespace WebStore
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
+
+            app.UseStatusCodePages();
 
             app.UseStaticFiles();
 
@@ -50,6 +54,8 @@ namespace WebStore
             app.UseMiddleware<TestMiddleware>();
 
             //app.UseWelcomePage("/welcome");
+
+            app.UseStatusCodePagesWithReExecute("/Home/Status/{0}");
 
             app.UseEndpoints(endpoints =>
             {
