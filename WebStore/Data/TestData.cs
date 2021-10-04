@@ -15,12 +15,12 @@ namespace WebStore.Data
 
         public static IEnumerable<Category> Categories { get; } = new[]
         {
-            new Category { Id = 1, Name = "Все", Order = 0},
-            new Category { Id = 2, Name = "Женское", Order = 1, ParentId = 1},
-            new Category { Id = 3, Name = "Мужское", Order = 2, ParentId = 1},
-            new Category { Id = 4, Name = "Детское", Order = 3, ParentId = 1},
-            new Category { Id = 5, Name = "Новинки", Order = 4, ParentId = 1},
-            new Category { Id = 6, Name = "Распродажа", Order = 5, ParentId = 1}
+            new Category { Id = 2, Name = "Женское", Order = 1},
+            new Category { Id = 3, Name = "Мужское", Order = 2},
+            new Category { Id = 4, Name = "Детское", Order = 3},
+            new Category { Id = 5, Name = "Новинки", Order = 4},
+            new Category { Id = 6, Name = "Распродажа", Order = 5},
+            new Category { Id = 7, Name = "Сотрудники", Order = 6},
         };
 
         public static IEnumerable<Brand> Brands { get; } = new[]

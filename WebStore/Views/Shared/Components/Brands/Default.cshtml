@@ -1,8 +1,11 @@
-﻿<div class="products_bar_links">
+﻿@model IEnumerable<BrandViewModel>
+
+<div class="products_bar_links">
 	<ul class="d-flex flex-row align-items-start justify-content-start">
-		<li><a href="#">All</a></li>
-		<li><a href="#">Hot Products</a></li>
-		<li class="active"><a href="#">New Products</a></li>
-		<li><a href="#">Sale Products</a></li>
+		@foreach(var brand in Model)
+		{
+			<li><a href="#">@brand.Name</a></li>
+		}
+		@*<li class="active">*@
 	</ul>
 </div>

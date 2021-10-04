@@ -1,4 +1,6 @@
-﻿<li><a asp-controller="Category" asp-action="Index">Women</a></li>
-<li><a asp-controller="Category" asp-action="Index">Men</a></li>
-<li><a asp-controller="Category" asp-action="Index">Kids</a></li>
-<li><a asp-controller="Category" asp-action="Index">Home Deco</a></li>
+﻿@model IEnumerable<CategoryViewModel>
+
+@foreach(var category in Model)
+{
+	<li><a asp-controller="Category" asp-action="Index">@category.Name</a></li>
+}
