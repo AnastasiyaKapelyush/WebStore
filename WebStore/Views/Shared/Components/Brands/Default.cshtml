@@ -4,7 +4,7 @@
 	<ul class="d-flex flex-row align-items-start justify-content-start">
 		@foreach(var brand in Model)
 		{
-			<li><a href="#">@brand.Name</a></li>
+			<li><a asp-controller="Catalog" asp-action="Index" asp-route-BrandId="@brand.Id">@brand.Name</a></li>
 		}
 		@*<li class="active">*@
 	</ul>
