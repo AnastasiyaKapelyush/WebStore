@@ -3,7 +3,12 @@
 	ViewBag.Title = "Каталог товаров";
 }
 
-<partial name="Partial/_Style">
+@section Styles
+{
+	<link rel="stylesheet" type="text/css" href="~/css/category.css">
+	<link rel="stylesheet" type="text/css" href="~/css/category_responsive.css">
+}
+
 <div class="products">
 	<div class="container">
 		<partial name="Partial/_Filter" />

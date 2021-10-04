@@ -12,9 +12,13 @@ namespace WebStore.Controllers
             return View();
         }
 
-        public IActionResult Status(string code)
+        public IActionResult Status(string id)
         {
-            return Content($"Status code: {code}");
+            switch (id)
+            {
+                case "404": return View("Error404");
+                default: return Content($"Status: {id}");
+            }
         }
     }
 }

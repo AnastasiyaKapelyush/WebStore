@@ -44,7 +44,7 @@ namespace WebStore
                 app.UseBrowserLink();
             }
 
-            app.UseStatusCodePages();
+            app.UseStatusCodePagesWithRedirects("~/Home/Status/{0}");
 
             app.UseStaticFiles();
 
@@ -54,8 +54,6 @@ namespace WebStore
             app.UseMiddleware<TestMiddleware>();
 
             //app.UseWelcomePage("/welcome");
-
-            app.UseStatusCodePagesWithReExecute("/Home/Status/{0}");
 
             app.UseEndpoints(endpoints =>
             {
