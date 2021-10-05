@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebStore.DAL;
+using WebStore.Data;
 using WebStore.Infrastucture.Conventions;
 using WebStore.Infrastucture.Middleware;
 using WebStore.Services;
@@ -22,15 +23,17 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //Регистрация контекста
+            services.AddDbContext<WebStoreDB>(opt =>
+                opt.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
+
             //Регистрация сервисов
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
             services.AddSingleton<IProductData, InMemoryProductData>();
+
+            services.AddTransient<WebStoreDbInitializer>();
             //services.AddScoped<IEmployeesData, InMemoryEmployeesData>();
             //services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
-
-            //Регистрация контекста
-            services.AddDbContext<WebStoreDB>(opt => 
-                opt.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
 
             //Добавление инфраструктуры MVC
             services.AddControllersWithViews(opt => opt.Conventions.Add(new TestControllerConvention()))
