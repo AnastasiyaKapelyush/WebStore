@@ -8,7 +8,8 @@ using WebStore.DAL;
 using WebStore.Data;
 using WebStore.Infrastucture.Conventions;
 using WebStore.Infrastucture.Middleware;
-using WebStore.Services;
+using WebStore.Services.InMemory;
+using WebStore.Services.InSQL;
 using WebStore.Services.Interfaces;
 
 namespace WebStore
@@ -29,7 +30,9 @@ namespace WebStore
 
             //Регистрация сервисов
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
-            services.AddSingleton<IProductData, InMemoryProductData>();
+
+            //services.AddSingleton<IProductData, InMemoryProductData>();
+            services.AddScoped<IProductData, SqlProductData>();
 
             services.AddTransient<WebStoreDbInitializer>();
             //services.AddScoped<IEmployeesData, InMemoryEmployeesData>();
