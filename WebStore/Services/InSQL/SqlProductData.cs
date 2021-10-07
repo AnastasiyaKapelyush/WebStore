@@ -1,27 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WebStore.Data;
+using WebStore.DAL;
 using WebStore.Domain;
 using WebStore.Domain.Entities;
 using WebStore.Services.Interfaces;
 
-namespace WebStore.Services
+namespace WebStore.Services.InSQL
 {
-    public class InMemoryProductData : IProductData
+    public class SqlProductData : IProductData
     {
+        private readonly WebStoreDB _db;
+
+        public SqlProductData(WebStoreDB db)
+        {
+            _db = db;
+        }
+
         public IEnumerable<Brand> GetBrands()
         {
-            return TestData.Brands;
+            return _db.Brands;
         }
 
         public IEnumerable<Category> GetCategories()
         {
-            return TestData.Categories;
+            return _db.Categories;
         }
 
         public IEnumerable<Product> GetProducts(ProductFilter filter = null)
         {
-            IEnumerable<Product> query = TestData.Products;
+            IQueryable<Product> query = _db.Products;
 
             if (filter?.CategoryId != null)
                 query = query.Where(p => p.CategoryId == filter.CategoryId);

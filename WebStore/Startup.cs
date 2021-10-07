@@ -1,16 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.DAL;
+using WebStore.Data;
 using WebStore.Infrastucture.Conventions;
 using WebStore.Infrastucture.Middleware;
-using WebStore.Services;
+using WebStore.Services.InMemory;
+using WebStore.Services.InSQL;
 using WebStore.Services.Interfaces;
 
 namespace WebStore
@@ -25,9 +24,17 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //Регистрация контекста
+            services.AddDbContext<WebStoreDB>(opt =>
+                opt.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
+
             //Регистрация сервисов
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
-            services.AddSingleton<IProductData, InMemoryProductData>();
+
+            //services.AddSingleton<IProductData, InMemoryProductData>();
+            services.AddScoped<IProductData, SqlProductData>();
+
+            services.AddTransient<WebStoreDbInitializer>();
             //services.AddScoped<IEmployeesData, InMemoryEmployeesData>();
             //services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
 
@@ -44,7 +51,7 @@ namespace WebStore
                 app.UseBrowserLink();
             }
 
-            app.UseStatusCodePages();
+            app.UseStatusCodePagesWithRedirects("~/Home/Status/{0}");
 
             app.UseStaticFiles();
 
@@ -54,8 +61,6 @@ namespace WebStore
             app.UseMiddleware<TestMiddleware>();
 
             //app.UseWelcomePage("/welcome");
-
-            app.UseStatusCodePagesWithReExecute("/Home/Status/{0}");
 
             app.UseEndpoints(endpoints =>
             {

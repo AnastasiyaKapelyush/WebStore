@@ -36,7 +36,6 @@ namespace WebStore.ViewModels
                     if (Age < 15 || Age > 90)
                         return new[] { new ValidationResult("Недопустимый возраст", new[] { nameof(Age) }) };
                     return new[] { ValidationResult.Success };
-                    break;
                 default: return new[] { ValidationResult.Success };
             }
         }

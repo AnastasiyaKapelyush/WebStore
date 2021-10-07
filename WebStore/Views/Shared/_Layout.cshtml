@@ -9,6 +9,8 @@
 	
 	<partial name="Partial/_Styles"/>
 
+	@RenderSectionAsync("Styles", false)
+
 </head>
 <body>
 
@@ -30,6 +32,8 @@
 	</div>
 
 	<partial name="Partial/_Scripts"/>
+
+	@RenderSectionAsync("Scripts", false)
 	
 </body>
 </html>
