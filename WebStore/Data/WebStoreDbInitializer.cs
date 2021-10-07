@@ -45,6 +45,12 @@ namespace WebStore.Data
                 return;
             }
 
+            var categories_pool = TestData.Categories.ToDictionary(c => c.Id);
+            var brands_pool = TestData.Brands.ToDictionary(b => b.Id);
+
+            foreach (var child_category in TestData.Categories.Where(c => c.ParentId != null))
+                child_category.Parent = categories_pool[(int)child_category.ParentId];
+
             _logger.LogInformation("Запись каталогов...");
 
             //Запуск транзакции
