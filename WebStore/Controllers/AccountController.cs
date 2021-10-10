@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using WebStore.Domain.Entities.Identity;
 using WebStore.ViewModels.Identity;
 
@@ -22,10 +23,29 @@ namespace WebStore.Controllers
         }
 
         //Принимает представление
-        [HttpPost]
-        public IActionResult Register(RegisterUserViewModel registerUserViewModel)
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterUserViewModel model)
         {
-            return RedirectToAction("Index", "Home");
+            if (!ModelState.IsValid) return View(model);
+
+            var user = new User 
+            { 
+                UserName = model.UserName
+            };
+
+            var register = await _userManager.CreateAsync(user, model.Password);
+
+            if (register.Succeeded)
+            {
+                await _signInManager.SignInAsync(user, false);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            foreach (var error in register.Errors)
+                ModelState.AddModelError("", error.Description);
+
+            return View(model);
         }
 
         public IActionResult Login()

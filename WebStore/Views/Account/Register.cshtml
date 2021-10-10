@@ -4,3 +4,27 @@
     ViewData["Title"] = "Register";
 }
 
+<div class="wrapper">
+  <form class="login">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <p class="title">Регистрация</p>
+
+    <input asp-for="UserName" placeholder="Логин" autofocus/>
+    <i class="fa fa-user"></i>
+    <span asp-validation-for="UserName" class="text-danger"/>
+
+    <input asp-for="Password" placeholder="Пароль" />
+    <i class="fa fa-key"></i>
+    <span asp-validation-for="Password" class="text-danger"/>
+
+    <input asp-for="PasswordConfirm" placeholder="Подтверждение пароля" />
+    <i class="fa fa-key"></i>
+    <span asp-validation-for="PasswordConfirm" class="text-danger"/>
+
+    <button asp-action="Register" asp-antiforgery="true">
+      <i class="spinner"></i>
+      <span class="state">Реrистрация</span>
+    </button>
+  </form>
+</div>

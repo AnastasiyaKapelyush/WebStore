@@ -61,9 +61,9 @@ namespace WebStore
 
                 opt.ExpireTimeSpan = TimeSpan.FromDays(10);//Время хранения cookie
 
-                opt.LoginPath = "Account/Login";//Основные пути перенаправления, если требуется вход в систему
-                opt.LogoutPath = "Account/Logout"; //если требуется выход из системы
-                opt.AccessDeniedPath = "Account/AccessDenied";//Отказ в доступе
+                opt.LoginPath = "/Account/Login";//Основные пути перенаправления, если требуется вход в систему
+                opt.LogoutPath = "/Account/Logout"; //если требуется выход из системы
+                opt.AccessDeniedPath = "/Account/AccessDenied";//Отказ в доступе
 
                 opt.SlidingExpiration = true; //Требование изменения ид в случае входа в систему и выхода
             });
