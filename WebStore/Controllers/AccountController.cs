@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Domain.Entities.Identity;
+using WebStore.ViewModels.Identity;
 
 namespace WebStore.Controllers
 {
@@ -14,9 +15,17 @@ namespace WebStore.Controllers
             _signInManager = signInManager;
         }
 
+        //Высылает представление
         public IActionResult Register()
         {
-            return View();
+            return View(new RegisterUserViewModel());
+        }
+
+        //Принимает представление
+        [HttpPost]
+        public IActionResult Register(RegisterUserViewModel registerUserViewModel)
+        {
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Login()
