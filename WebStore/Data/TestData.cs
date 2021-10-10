@@ -20,7 +20,6 @@ namespace WebStore.Data
             new Category { Id = 3, Name = "Детское", Order = 3},
             new Category { Id = 4, Name = "Новинки", Order = 4},
             new Category { Id = 5, Name = "Распродажа", Order = 5},
-            new Category { Id = 6, Name = "Сотрудники", Order = 6},
         };                      
 
         public static IEnumerable<Brand> Brands { get; } = new[]

@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebStore.DAL;
@@ -45,46 +43,47 @@ namespace WebStore.Data
                 return;
             }
 
-            _logger.LogInformation("Запись каталогов...");
+            var categories_pool = TestData.Categories.ToDictionary(c => c.Id);
+            var brands_pool = TestData.Brands.ToDictionary(b => b.Id);
 
-            //Запуск транзакции
+            foreach (var child_category in TestData.Categories.Where(c => c.ParentId != null))
+                child_category.Parent = categories_pool[(int)child_category.ParentId];
+
+            foreach (var product in TestData.Products)
+            {
+                product.Category = categories_pool[product.CategoryId];
+
+                if (product.BrandId is { } brand_id)
+                    product.Brand = brands_pool[brand_id];
+
+                product.Id = 0;
+                product.CategoryId = 0;
+                product.BrandId = null;
+            }
+
+            foreach (var category in TestData.Categories)
+            {
+                category.Id = 0;
+                category.ParentId = null;
+            }
+
+            foreach (var brand in TestData.Brands)
+                brand.Id = 0;
+
+
+            _logger.LogInformation("Запись данных...");
+
             await using (await _db.Database.BeginTransactionAsync())
             {
                 _db.Categories.AddRange(TestData.Categories);
-
-                await _db.Database.ExecuteSqlRawAsync("set identity_insert [dbo].[Categories] ON");
-                await _db.SaveChangesAsync(); //сохранение данных в БД
-                await _db.Database.ExecuteSqlRawAsync("set identity_insert [dbo].[Categories] OFF");
-                await _db.Database.CommitTransactionAsync();
-            }
-
-            _logger.LogInformation("Запись каталогов выполнена успешно");
-            _logger.LogInformation("Запись брендов...");
-
-            await using (await _db.Database.BeginTransactionAsync())
-            {
                 _db.Brands.AddRange(TestData.Brands);
-
-                await _db.Database.ExecuteSqlRawAsync("set identity_insert [dbo].[Brands] ON");
-                await _db.SaveChangesAsync(); //сохранение данных в БД
-                await _db.Database.ExecuteSqlRawAsync("set identity_insert [dbo].[Brands] OFF");
-                await _db.Database.CommitTransactionAsync();
-            }
-
-            _logger.LogInformation("Запись брендов выполнена успешно");
-            _logger.LogInformation("Запись товаров...");
-
-            await using (await _db.Database.BeginTransactionAsync())
-            {
                 _db.Products.AddRange(TestData.Products);
 
-                await _db.Database.ExecuteSqlRawAsync("set identity_insert [dbo].[Products] ON");
                 await _db.SaveChangesAsync(); //сохранение данных в БД
-                await _db.Database.ExecuteSqlRawAsync("set identity_insert [dbo].[Products] OFF");
                 await _db.Database.CommitTransactionAsync();
             }
 
-            _logger.LogInformation("Запись товаров выполнена успешно");
+            _logger.LogInformation($"Запись данных выполнена успешно");
         }
     }
 }
