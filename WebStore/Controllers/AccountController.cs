@@ -16,6 +16,7 @@ namespace WebStore.Controllers
             _signInManager = signInManager;
         }
 
+        #region Register
         //Высылает представление
         public IActionResult Register()
         {
@@ -47,6 +48,7 @@ namespace WebStore.Controllers
 
             return View(model);
         }
+        #endregion
 
         public IActionResult Login()
         {
