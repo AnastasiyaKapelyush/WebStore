@@ -97,13 +97,13 @@ namespace WebStore
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             //Вызов промежуточного ПО
             app.UseMiddleware<TestMiddleware>();
 
             //app.UseWelcomePage("/welcome");
-
-            app.UseAuthentication();
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
