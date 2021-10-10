@@ -1,20 +1,39 @@
-﻿
+﻿@model WebStore.ViewModels.Identity.LoginViewModel
+
 @{
-    ViewData["Title"] = "Register";
+	ViewData["Title"] = "Вход";
 }
 
-<div class="wrapper">
-  <form class="login">
-    <p class="title">Log in</p>
-    <input type="text" placeholder="Username" autofocus/>
-    <i class="fa fa-user"></i>
-    <input type="password" placeholder="Password" />
-    <i class="fa fa-key"></i>
-    @*<a href="#">Forgot your password?</a>*@
-    <button >
-      <i class="spinner"></i>
-      <span class="state">Войти</span>
-    </button>
+@section Styles
+{
+<link rel="stylesheet" type="text/css" href="~/css/login.css">
+}
+
+<div class="container" style="margin-top: 80px;">
+ <div class="wrapper">
+  <form asp-action="Login" asp-antiforgery="true" asp-route-ReturnUrl="@Model.ReturnUrl" class="login">
+   <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+   <p class="title">Вход</p>
+
+   <input asp-for="UserName" type="text" placeholder="Имя пользователя" autofocus />
+   <span asp-validation-for="UserName" class="text-danger"></span>
+
+   <input asp-for="Password" type="password" placeholder="Пароль" />
+   <span asp-validation-for="Password" class="text-danger"></span>
+
+   <span>
+	<input asp-for="RememberMe"/> 
+	Запомнить меня
+   </span>
+
+			@*<a href="#">Forgot your password?</a>*@
+
+   <button>
+	<i class="spinner"></i>
+	<span class="state">Войти</span>
+   </button>
   </form>
+ </div>
 </div>
 
