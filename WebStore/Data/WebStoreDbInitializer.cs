@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebStore.DAL;
@@ -85,7 +83,7 @@ namespace WebStore.Data
                 await _db.Database.CommitTransactionAsync();
             }
 
-            _logger.LogInformation("Запись данных выполнена успешно");
+            _logger.LogInformation($"Запись данных выполнена успешно");
         }
     }
 }
