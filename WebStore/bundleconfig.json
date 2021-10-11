@@ -1,0 +1,31 @@
+[
+  {
+    "outputFileName": "wwwroot/css/bundle.css",
+    "inputFiles": [
+      "wwwroot/css/cart_responsive.css",
+      "wwwroot/css/category_responsive.css",
+      "wwwroot/css/checkout_responsive.css",
+      "wwwroot/css/login.css",
+      "wwwroot/css/product_responsive.css",
+      "wwwroot/css/responsive.css",
+      "wwwroot/css/style.css"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "wwwroot/js/bundle.js",
+    "inputFiles": [
+      "wwwroot/js/cart.js",
+      "wwwroot/js/category.js",
+      "wwwroot/js/checkout.js",
+      "wwwroot/js/custom.js",
+      "wwwroot/js/product.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true,
+      "gzip": true
+    },
+    "sourceMap": true
+  }
+]

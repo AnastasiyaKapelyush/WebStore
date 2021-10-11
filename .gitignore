@@ -361,4 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/WebStore/wwwroot/lib/
+**/wwwroot/lib/
+**/wwwroot/css/bundle.min.css
+**/wwwroot/css/bundle.css
+**/wwwroot/js/bundle.min.js.map
+**/wwwroot/js/bundle.min.js.gz
+**/wwwroot/js/bundle.min.js
+**/wwwroot/js/bundle.js
