@@ -2,13 +2,7 @@
   {
     "outputFileName": "wwwroot/css/bundle.css",
     "inputFiles": [
-      "wwwroot/css/cart_responsive.css",
-      "wwwroot/css/category_responsive.css",
-      "wwwroot/css/checkout_responsive.css",
-      "wwwroot/css/login.css",
-      "wwwroot/css/product_responsive.css",
-      "wwwroot/css/responsive.css",
-      "wwwroot/css/style.css"
+      "wwwroot/css/responsive.css"
     ],
     "sourceMap": true
   },

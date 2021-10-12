@@ -4,4 +4,11 @@
 <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="~/lib/OwlCarousel2/animate.css">
 <link rel="stylesheet" type="text/css" href="~/css/main_styles.css">
-<link rel="stylesheet" type="text/css" href="~/css/responsive.css">
+
+<environment include="Development">
+	<link rel="stylesheet" type="text/css" href="~/css/responsive.css" asp-append-version="true">
+</environment>
+
+<environment exclude="Development"> 
+	<link rel="stylesheet" type="text/css" href="~/css/bundle.min.css" asp-append-version="true">
+</environment>
