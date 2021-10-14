@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WebStore.Domain.Entities.Identity;
 using WebStore.Models;
 using WebStore.Services.Interfaces;
 using WebStore.ViewModels;
@@ -8,6 +10,7 @@ namespace WebStore.Controllers
 {
     //[Route("Employees/[action]/{id?}")]
     //[Route("Staff/[action]/{id?}")]
+    [Authorize] // Ограничение дсотупа к контроллеру
     public class EmployeesController : Controller
     {
         private readonly IEmployeesData _employeesData;
@@ -41,12 +44,14 @@ namespace WebStore.Controllers
             return View(employee);
         }
 
+        [Authorize(Roles = Role.Administrators)]
         public IActionResult Create()
         {
             return View("Edit", new EmployeeViewModel());
         }
 
         #region Edit
+        [Authorize(Roles = Role.Administrators)]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -69,6 +74,7 @@ namespace WebStore.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = Role.Administrators)]
         public IActionResult Edit(EmployeeViewModel model)
         {
             if (model.FirstName == "Тест" && model.LastName == "Тестов" && model.MiddleName == "Тестович")
@@ -97,6 +103,7 @@ namespace WebStore.Controllers
         #endregion
 
         #region Delete
+        [Authorize(Roles = Role.Administrators)]
         public IActionResult Delete(int id)
         {
             if (id < 0)
@@ -119,6 +126,7 @@ namespace WebStore.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = Role.Administrators)]
         public IActionResult DeleteConfirmed(int id)
         {
             _employeesData.Delete(id);
