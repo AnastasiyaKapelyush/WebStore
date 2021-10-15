@@ -35,8 +35,8 @@
 					<div class="product_quantity_container">
 					 <div class="product_quantity ml-lg-auto mr-lg-auto text-center">
 					  <span class="product_text product_num">@quantity</span>
-					  <a asp-action="Add" asp-route-id="@product.Id"><div class="qty_sub qty_button trans_200 text-center"><span>-</span></div></a>
-					  <a asp-action="Decrement" asp-route-id="@product.Id"><div class="qty_add qty_button trans_200 text-center"><span>+</span></div></a>
+					  <a asp-action="Add" asp-route-id="@product.Id"><div class="qty_sub qty_button trans_200 text-center"><span>+</span></div></a>
+					  <a asp-action="Decrement" asp-route-id="@product.Id"><div class="qty_add qty_button trans_200 text-center"><span>-</span></div></a>
 					 </div>
 					</div>
 					<div class="product_total product_text"><span>Общая сумма: </span>@((product.Price * quantity))</div>
