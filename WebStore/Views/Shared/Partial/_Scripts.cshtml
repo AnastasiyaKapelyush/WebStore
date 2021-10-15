@@ -13,8 +13,15 @@
 <script src="~/lib/flexslider/jquery.flexslider.min.js"></script>
 <script src="~/lib/isotope/isotope.pkgd.min.js"></script>
 <script src="~/lib/isotope-fit-columns/fit-columns.js"></script>
-<script src="~/js/custom.js"></script>
-<script src="~/js/cart.js"></script>
-<script src="~/js/checkout.js"></script>
-<script src="~/js/product.js"></script>
-<script src="~/js/category.js"></script>
+
+<environment include="Development">
+	<script src="~/js/cart.js" asp-append-version="true"></script>
+	<script src="~/js/category.js" asp-append-version="true"></script>
+	<script src="~/js/checkout.js" asp-append-version="true"></script>
+	<script src="~/js/custom.js" asp-append-version="true"></script>
+	<script src="~/js/product.js" asp-append-version="true"></script>
+</environment>
+
+<environment exclude="Development"> 
+	<script src="~/js/bundle.min.js" asp-append-version="true"></script>
+</environment>

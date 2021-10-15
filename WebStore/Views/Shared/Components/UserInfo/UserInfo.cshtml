@@ -1,0 +1,16 @@
+﻿@using WebStore.Domain.Entities.Identity
+<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
+	@if (User.IsInRole(Role.Administrators))
+	{
+		<div class="user"><i class="fa fa-keyboard-o"></i> Админка</div>
+	}
+
+ <!-- User -->
+ <div class="user"><a asp-controller="Checkout" asp-action="Index"><div><img src="~/images/user.svg" alt="https://www.flaticon.com/authors/freepik"></div></a><div>@User.Identity.Name</div></div>
+
+ <!-- Cart -->
+ <div class="cart"><a asp-controller="Cart" asp-action="Index"><div><img class="svg" src="~/images/cart.svg" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
+
+ <!-- Logout -->
+ <div class="user"><a asp-controller="Account" asp-action="Logout">Выход</a></div>
+</div>

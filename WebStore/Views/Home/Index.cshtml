@@ -1,15 +1,8 @@
-﻿@using WebStore.Services.Interfaces
+﻿@using WebStore.Infrastucture.Mapping
+@using WebStore.Services.Interfaces
 @inject IProductData productData
-@{
-    var products = productData.GetProducts().Select(s => new ProductViewModel
-        {
-            Id = s.Id,
-            Name = s.Name,
-            Price = s.Price,
-            ImageUrl = s.ImageUrl
-        });
-}
+
 
 <partial name="Partial/_Slider" />
-<partial name="Partial/_Products" model="products" />
+<partial name="Partial/_Products" model="productData.GetProducts().ToView()" />
 <partial name="Partial/_Boxes" />

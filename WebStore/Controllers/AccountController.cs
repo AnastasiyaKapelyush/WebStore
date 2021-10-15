@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WebStore.Domain.Entities.Identity;
@@ -6,6 +7,7 @@ using WebStore.ViewModels.Identity;
 
 namespace WebStore.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -18,6 +20,7 @@ namespace WebStore.Controllers
 
         #region Register
         //Высылает представление
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View(new RegisterUserViewModel());
@@ -25,6 +28,7 @@ namespace WebStore.Controllers
 
         //Принимает представление
         [HttpPost, ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterUserViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
@@ -40,6 +44,8 @@ namespace WebStore.Controllers
             {
                 await _signInManager.SignInAsync(user, false);
 
+                await _userManager.AddToRoleAsync(user, Role.Users);
+
                 return RedirectToAction("Index", "Home");
             }
 
@@ -51,12 +57,14 @@ namespace WebStore.Controllers
         #endregion
 
         #region Login
+        [AllowAnonymous]
         public IActionResult Login(string returnUrl)
         {
             return View(new LoginViewModel() { ReturnUrl = returnUrl});
         }
 
         [HttpPost, ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
@@ -87,6 +95,7 @@ namespace WebStore.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [AllowAnonymous]
         public IActionResult AccessDenied()
         {
             return View();

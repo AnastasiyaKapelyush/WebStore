@@ -1,0 +1,25 @@
+[
+  {
+    "outputFileName": "wwwroot/css/bundle.css",
+    "inputFiles": [
+      "wwwroot/css/responsive.css"
+    ],
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "wwwroot/js/bundle.js",
+    "inputFiles": [
+      "wwwroot/js/cart.js",
+      "wwwroot/js/category.js",
+      "wwwroot/js/checkout.js",
+      "wwwroot/js/custom.js",
+      "wwwroot/js/product.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true,
+      "gzip": true
+    },
+    "sourceMap": true
+  }
+]
