@@ -46,7 +46,7 @@ namespace WebStore.Services.InSQL
         {
             IQueryable<Product> query = _db.Products.Include(p => p.Brand).Include(p => p.Category);
 
-            if (filter?.Ids.Length > 0)
+            if (filter?.Ids?.Length > 0)
                 query = query.Where(p => filter.Ids.Contains(p.Id));
             else 
             {

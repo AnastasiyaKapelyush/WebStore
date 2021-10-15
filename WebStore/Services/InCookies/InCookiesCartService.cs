@@ -36,7 +36,7 @@ namespace WebStore.Services.InCookies
                     return cart;
                 }
 
-                // По сути переписываем cookies из request в responce
+                // По сути переписываем cookies из request в response
                 ReplaceCart(cookies, cart_cookies);
                 return JsonConvert.DeserializeObject<Cart>(cart_cookies);
             }

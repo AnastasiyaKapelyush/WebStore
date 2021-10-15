@@ -1,4 +1,9 @@
-﻿@section Styles
+﻿@model CartViewModel
+@{
+	ViewBag.Title = "Корзина";
+}
+
+@section Styles
 {
 	<link rel="stylesheet" type="text/css" href="~/css/cart.css">
 	<link rel="stylesheet" type="text/css" href="~/css/cart_responsive.css">
@@ -8,12 +13,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<partial name="Partial/_CartContainer">
+				<partial name="Partial/_CartContainer" model="Model">
 			</div>
 		</div>
 		<div class="row cart_extra_row">
 			<partial name="Partial/_Coupon">
-			<partial name="Partial/_Total">
+			<partial name="Partial/_Total" model="Model">
 		</div>
 	</div>
 </div>
