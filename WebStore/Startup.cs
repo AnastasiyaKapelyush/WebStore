@@ -109,6 +109,11 @@ namespace WebStore
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
                 //Настройка главного маршрута приложения
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
